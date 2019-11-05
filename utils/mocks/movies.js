@@ -17,6 +17,22 @@ const moviesMock = [{"id":"60be5e14-3396-4ab8-ae5b-2906fde9f2cb","title":"Armles
 
 {"id":"7747ce08-5aa7-4247-bed0-2b83baf0ac2f","title":"Court-Martial of Billy Mitchell, The","year":2012,"cover":"http://dummyimage.com/143x233.bmp/ff4444/ffffff","description":"Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\n\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.","duration":2048,"contentRating":"G","source":"http://phpbb.com/sed.js?venenatis=curabitur&non=convallis&sodales=duis&sed=consequat&tincidunt=dui&eu=nec&felis=nisi&fusce=volutpat&posuere=eleifend&felis=donec&sed=ut&lacus=dolor&morbi=morbi&sem=vel&mauris=lectus&laoreet=in&ut=quam&rhoncus=fringilla&aliquet=rhoncus&pulvinar=mauris&sed=enim&nisl=leo&nunc=rhoncus&rhoncus=sed&dui=vestibulum&vel=sit&sem=amet&sed=cursus&sagittis=id&nam=turpis&congue=integer&risus=aliquet&semper=massa&porta=id&volutpat=lobortis&quam=convallis&pede=tortor&lobortis=risus&ligula=dapibus&sit=augue&amet=vel&eleifend=accumsan&pede=tellus&libero=nisi&quis=eu&orci=orci&nullam=mauris&molestie=lacinia&nibh=sapien&in=quis&lectus=libero&pellentesque=nullam&at=sit&nulla=amet&suspendisse=turpis&potenti=elementum&cras=ligula&in=vehicula&purus=consequat&eu=morbi&magna=a&vulputate=ipsum&luctus=integer&cum=a&sociis=nibh","tags":["Crime|Drama"]}];
 
+function filteredMoviesMock(tag) {
+    return moviesMock.filter(movie => movie.tags.includes(tag));  
+}
+
+class MoviesServiceMock {
+    async getMovies() {
+        return Promise.resolve(moviesMock);        
+    } 
+    
+    async createMovie() {
+        return Promise.resolve(moviesMock[0]);
+    }
+}
+
 module.exports = {
-    moviesMock
+    moviesMock,
+    filteredMoviesMock,
+    MoviesServiceMock
 }
